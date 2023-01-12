@@ -80,4 +80,8 @@ def purchase_places():
         competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - number_places_required
         return render_template('welcome.html', club=club, competitions=competitions)
 
+
 # TODO: Add route for points display
+@app.route('/clubs', methods=['GET'])
+def display_points_clubs():
+    return render_template('clubs.html', clubs=clubs)
