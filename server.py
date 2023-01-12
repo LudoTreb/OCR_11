@@ -59,10 +59,16 @@ def purchase_places():
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     number_places_required = int(request.form['places'])
     number_places_max = 12
+    number_places_available = int(competition['numberOfPlaces'])
 
     if number_places_required > number_places_max:
         flash("Impossible to buy more than 12 places")
         return render_template('booking.html', club=club, competition=competition)
+
+    elif number_places_required > number_places_available:
+        flash("Impossible to buy more places than available")
+        return render_template('booking.html', club=club, competition=competition)
+
     else:
         flash('Great-booking complete!')
         competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - number_places_required
