@@ -70,6 +70,10 @@ def purchase_places():
         flash("Impossible to buy more places than available")
         return render_template('booking.html', club=club, competition=competition)
 
+    elif number_places_required > number_places_club:
+        flash("Impossible to buy more places than you own")
+        return render_template('booking.html', club=club, competition=competition)
+
     else:
         flash('Great-booking complete!')
         club['points'] = str(number_places_club - number_places_required)
