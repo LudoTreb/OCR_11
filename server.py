@@ -31,9 +31,14 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/showSummary', methods=['POST'])
+@app.route('/showSummary', methods=['GET', 'POST'])
 def show_summary():
-    club = [club for club in clubs if club['email'] == request.form['email']][0]
+    try:
+        club = [club for club in clubs if club['email'] == request.form['email']][0]
+    except IndexError:
+        flash("email incorrect")
+        return render_template('login.html')
+
     return render_template('welcome.html', club=club, competitions=competitions)
 
 
