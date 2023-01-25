@@ -64,15 +64,15 @@ def purchase_places():
 
     if number_places_required > number_places_max:
         flash("Impossible to buy more than 12 places")
-        return render_template('booking.html', club=club, competition=competition)
+        return render_template('welcome.html', club=club, competitions=competitions)
 
     elif number_places_required > number_places_available:
         flash("Impossible to buy more places than available")
-        return render_template('booking.html', club=club, competition=competition)
+        return render_template('welcome.html', club=club, competitions=competitions)
 
     elif number_places_required > number_places_club:
         flash("Impossible to buy more places than you own")
-        return render_template('booking.html', club=club, competition=competition)
+        return render_template('welcome.html', club=club, competitions=competitions)
 
     else:
         flash('Great-booking complete!')

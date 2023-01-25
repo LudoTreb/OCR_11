@@ -1,8 +1,8 @@
 import time
 
 from selenium import webdriver
-from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.service import Service
 
 service = Service("geckodriver.exe")
 driver = webdriver.Firefox(service=service)
@@ -13,7 +13,7 @@ driver.find_element(By.TAG_NAME, 'button').click()
 time.sleep(3)
 driver.find_element(By.CLASS_NAME, 'book').click()
 time.sleep(3)
-driver.find_element(By.NAME, 'places').send_keys('4')
+driver.find_element(By.NAME, 'places').send_keys('3')
 time.sleep(3)
 driver.find_element(By.TAG_NAME, 'button').click()
 time.sleep(3)
@@ -21,7 +21,7 @@ response_message = driver.find_element(By.CLASS_NAME, 'message')
 assert "Great-booking complete!" in response_message.text
 driver.find_element(By.CLASS_NAME, 'book').click()
 time.sleep(3)
-driver.find_element(By.NAME, 'places').send_keys('10')
+driver.find_element(By.NAME, 'places').send_keys('11')
 time.sleep(3)
 driver.find_element(By.TAG_NAME, 'button').click()
 time.sleep(3)
